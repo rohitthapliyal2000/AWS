@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import boto3
 import GET_img
 import json
-import time
 
 app = Flask(__name__)
 
@@ -33,7 +32,6 @@ def get_labels(thumbImg, client):
 def feed():
 	data = request.json
 
-	start = time.time()
 	with open("cre") as file:
 		for line in file:
 			if line[0] == 'A':
@@ -81,9 +79,11 @@ def feed():
 
 if __name__ == "__main__":
 	app.run(debug=True)
+
 # Output
 # [
 # 	{
+#     error: (If occured)
 # 		mageID: 
 # 		tags: [a, b, c, ...]
 # 	}
