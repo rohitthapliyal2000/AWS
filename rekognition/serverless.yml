@@ -1,0 +1,26 @@
+service: rekognition
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+custom:
+  wsgi:
+    app: driver.app
+    pythonBin: python3
+    packRequirements: false
+  pythonRequirements:
+    dockerizePip: true
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-west-2
+
+functions:
+  driver:
+    handler: wsgi.handler
+    events:
+      - http: ANY /
+        path: /
+        method: post
