@@ -1,2 +1,2 @@
 # AWS
-AWS using Python
+Amazon Web Service using Python
